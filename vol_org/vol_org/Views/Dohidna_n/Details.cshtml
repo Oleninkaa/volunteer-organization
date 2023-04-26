@@ -1,0 +1,42 @@
+﻿@model vol_org.Models.Dohidna_n
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dohidna_n</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vydatkovy_ko.number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vydatkovy_ko.number)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

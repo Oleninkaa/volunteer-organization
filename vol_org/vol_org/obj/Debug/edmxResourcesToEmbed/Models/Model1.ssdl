@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="volunteer_orgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Balance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doh_num">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dohidna_ID" Type="int" Nullable="false" />
+    <Property Name="number" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="mc_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dohidna_n">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="member_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="unit" Type="varchar" MaxLength="10" />
+    <Property Name="price" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="MC_remain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mc_ID" Type="int" Nullable="false" />
+    <Property Name="amount" Type="int" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="card_num" Type="varchar" MaxLength="19" Nullable="false" />
+    <Property Name="INN" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Prybutkovy_ko">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="balance_ID" Type="int" Nullable="false" />
+    <Property Name="number" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="sum" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="member_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reciever">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="military_unit" Type="varchar" MaxLength="100" />
+    <Property Name="department" Type="varchar" MaxLength="100" />
+    <Property Name="full_name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Vydatkova_n">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="reciever_ID" Type="int" Nullable="false" />
+    <Property Name="mc_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vydatkovy_ko">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="sum" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="reason" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="balance_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Doh_num__mc_ID__5070F446">
+    <End Role="MC" Type="Self.MC" Multiplicity="1" />
+    <End Role="Doh_num" Type="Self.Doh_num" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Doh_num">
+        <PropertyRef Name="mc_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dohidna_n__membe__4D94879B">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Dohidna_n" Type="Self.Dohidna_n" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dohidna_n">
+        <PropertyRef Name="member_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MC_remain__mc_ID__44FF419A">
+    <End Role="MC" Type="Self.MC" Multiplicity="1" />
+    <End Role="MC_remain" Type="Self.MC_remain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MC_remain">
+        <PropertyRef Name="mc_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vydatkova__mc_ID__4AB81AF0">
+    <End Role="MC" Type="Self.MC" Multiplicity="1" />
+    <End Role="Vydatkova_n" Type="Self.Vydatkova_n" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vydatkova_n">
+        <PropertyRef Name="mc_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vydatkova__recie__49C3F6B7">
+    <End Role="Reciever" Type="Self.Reciever" Multiplicity="1" />
+    <End Role="Vydatkova_n" Type="Self.Vydatkova_n" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reciever">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vydatkova_n">
+        <PropertyRef Name="reciever_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_doh_num_dohidna">
+    <End Role="Dohidna_n" Type="Self.Dohidna_n" Multiplicity="1" />
+    <End Role="Doh_num" Type="Self.Doh_num" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dohidna_n">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Doh_num">
+        <PropertyRef Name="dohidna_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_doh_num_mc">
+    <End Role="MC" Type="Self.MC" Multiplicity="1" />
+    <End Role="Doh_num" Type="Self.Doh_num" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Doh_num">
+        <PropertyRef Name="mc_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dohidna_vydatkovy_ko">
+    <End Role="Vydatkovy_ko" Type="Self.Vydatkovy_ko" Multiplicity="1" />
+    <End Role="Dohidna_n" Type="Self.Dohidna_n" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Vydatkovy_ko">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dohidna_n">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_member_ID">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Prybutkovy_ko" Type="Self.Prybutkovy_ko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Prybutkovy_ko">
+        <PropertyRef Name="member_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prybutkovy_ko_balance">
+    <End Role="Balance" Type="Self.Balance" Multiplicity="1" />
+    <End Role="Prybutkovy_ko" Type="Self.Prybutkovy_ko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Balance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Prybutkovy_ko">
+        <PropertyRef Name="balance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vydatkovy_ko_balance">
+    <End Role="Balance" Type="Self.Balance" Multiplicity="1" />
+    <End Role="Vydatkovy_ko" Type="Self.Vydatkovy_ko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Balance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vydatkovy_ko">
+        <PropertyRef Name="balance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="volunteer_orgModelStoreContainer">
+    <EntitySet Name="Balance" EntityType="Self.Balance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doh_num" EntityType="Self.Doh_num" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dohidna_n" EntityType="Self.Dohidna_n" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MC" EntityType="Self.MC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MC_remain" EntityType="Self.MC_remain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prybutkovy_ko" EntityType="Self.Prybutkovy_ko" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reciever" EntityType="Self.Reciever" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vydatkova_n" EntityType="Self.Vydatkova_n" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vydatkovy_ko" EntityType="Self.Vydatkovy_ko" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Doh_num__mc_ID__5070F446" Association="Self.FK__Doh_num__mc_ID__5070F446">
+      <End Role="MC" EntitySet="MC" />
+      <End Role="Doh_num" EntitySet="Doh_num" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dohidna_n__membe__4D94879B" Association="Self.FK__Dohidna_n__membe__4D94879B">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Dohidna_n" EntitySet="Dohidna_n" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MC_remain__mc_ID__44FF419A" Association="Self.FK__MC_remain__mc_ID__44FF419A">
+      <End Role="MC" EntitySet="MC" />
+      <End Role="MC_remain" EntitySet="MC_remain" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vydatkova__mc_ID__4AB81AF0" Association="Self.FK__Vydatkova__mc_ID__4AB81AF0">
+      <End Role="MC" EntitySet="MC" />
+      <End Role="Vydatkova_n" EntitySet="Vydatkova_n" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vydatkova__recie__49C3F6B7" Association="Self.FK__Vydatkova__recie__49C3F6B7">
+      <End Role="Reciever" EntitySet="Reciever" />
+      <End Role="Vydatkova_n" EntitySet="Vydatkova_n" />
+    </AssociationSet>
+    <AssociationSet Name="FK_doh_num_dohidna" Association="Self.FK_doh_num_dohidna">
+      <End Role="Dohidna_n" EntitySet="Dohidna_n" />
+      <End Role="Doh_num" EntitySet="Doh_num" />
+    </AssociationSet>
+    <AssociationSet Name="FK_doh_num_mc" Association="Self.FK_doh_num_mc">
+      <End Role="MC" EntitySet="MC" />
+      <End Role="Doh_num" EntitySet="Doh_num" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dohidna_vydatkovy_ko" Association="Self.FK_dohidna_vydatkovy_ko">
+      <End Role="Vydatkovy_ko" EntitySet="Vydatkovy_ko" />
+      <End Role="Dohidna_n" EntitySet="Dohidna_n" />
+    </AssociationSet>
+    <AssociationSet Name="FK_member_ID" Association="Self.FK_member_ID">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Prybutkovy_ko" EntitySet="Prybutkovy_ko" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prybutkovy_ko_balance" Association="Self.FK_prybutkovy_ko_balance">
+      <End Role="Balance" EntitySet="Balance" />
+      <End Role="Prybutkovy_ko" EntitySet="Prybutkovy_ko" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vydatkovy_ko_balance" Association="Self.FK_vydatkovy_ko_balance">
+      <End Role="Balance" EntitySet="Balance" />
+      <End Role="Vydatkovy_ko" EntitySet="Vydatkovy_ko" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

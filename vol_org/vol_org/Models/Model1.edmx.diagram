@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c007f84d2cf14d70935555e2242e4e47" Name="Diagram1">
+        <EntityTypeShape EntityType="volunteer_orgModel.Balance" Width="1.5" PointX="1.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Doh_num" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Dohidna_n" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.MC" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.MC_remain" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Member" Width="1.5" PointX="1.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Prybutkovy_ko" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Reciever" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Vydatkova_n" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_orgModel.Vydatkovy_ko" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
+        <AssociationConnector Association="volunteer_orgModel.FK_prybutkovy_ko_balance" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK_vydatkovy_ko_balance" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK__Doh_num__mc_ID__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK_doh_num_dohidna" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK_doh_num_mc" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK__Dohidna_n__membe__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK_dohidna_vydatkovy_ko" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK__MC_remain__mc_ID__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK__Vydatkova__mc_ID__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK_member_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_orgModel.FK__Vydatkova__recie__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
